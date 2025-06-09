@@ -60,6 +60,24 @@ Copy
 Edit
 kubectl apply -f k8s/
 
+⚙️ Resource Configuration
+Kubernetes resource limits and requests can be adjusted based on your environment's needs to optimize performance and resource usage.
+
+For example, in ./k8s/connections-db.yml:
+
+yaml
+Copy
+Edit
+resources:
+  limits:
+    memory: "1024Mi"
+    cpu: "500m"
+  requests:
+    memory: "512Mi"
+    cpu: "200m"
+requests define the minimum guaranteed resources.
+
+
 🔐 Secrets & Environment Variables
 env
 Copy
