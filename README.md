@@ -12,7 +12,7 @@ To improve maintainability and enable centralized configuration management:
 
 # 🐳 LinkedIn Backend Microservices — Full Docker Compose Stack
 
-This is a complete **monolithic `docker-compose.yml` setup** for my LinkedIn backend clone.
+This is a complete `docker-compose.yml` setup** for my LinkedIn backend clone.
 
 It includes:
 
