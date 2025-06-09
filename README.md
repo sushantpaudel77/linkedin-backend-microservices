@@ -56,7 +56,6 @@ kubectl apply -f k8s/
 
 ⚙️ Resource Configuration
 Kubernetes resource limits and requests can be adjusted based on your environment's needs to optimize performance and resource usage.
-
 For example, in ./k8s/connections-db.yml:
 
 resources:
@@ -105,8 +104,3 @@ Sushant Paudel
 🐳 DockerHub
 
 💬 Feel free to fork, contribute, or raise issues! This project is built for learning and scale experimentation.
-
-yaml
-Copy
-Edit
----
