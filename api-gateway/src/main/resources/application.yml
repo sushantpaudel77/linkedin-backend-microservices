@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/api/v1/users/**
+              filters:
+                - StripPrefix=2
+
+            - id: post-service
+              uri: lb://POST-SERVICE
+              predicates:
+                - Path=/api/v1/posts/**
+              filters:
+                - StripPrefix=2
+                - name: AuthenticationFilter
+
+            - id: connections-service
+              uri: lb://CONNECTIONS-SERVICE
+              predicates:
+                - Path=/api/v1/connections/**
+              filters:
+                - StripPrefix=2
+                - name: AuthenticationFilter
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 0.1
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+
+jwt:
+  secret: ${JWT_SECRET_KEY}

@@ -1,0 +1,71 @@
+services:
+
+  connections-db:
+    image: neo4j
+    container_name: connections-db
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - connections-db-data:/data
+    networks:
+      - linkedin-network
+
+  notification-service:
+    image: sushantpaudel77/my_linkedin-notification-service
+    container_name: notification-service
+    networks:
+      linkedin-network:
+    depends_on:
+      - discovery-server
+      - notification-db
+
+  notification-db:
+    image: postgres
+    container_name: notification-db
+    environment:
+      - POSTGRES_DB=notificationDB
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+    networks:
+      - linkedin-network
+    volumes:
+      - notification-db-data:/var/lib/postgresql/data
+
+  discovery-server:
+    image: sushantpaudel77/my_linkedin-discovery-server
+    container_name: discovery-server
+    networks:
+      - linkedin-network
+    ports:
+      - "8761:8761"
+
+  connections-service:
+    image: sushantpaudel77/my_linkedin-connection-service
+    container_name: connections-service
+    networks:
+      - linkedin-network
+    depends_on:
+      - discovery-server
+      - connections-db
+
+  api-gateway:
+    image: sushantpaudel77/my_linkedin-api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - linkedin-network
+    depends_on:
+      - discovery-server
+    environment:
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+
+networks:
+  linkedin-network:
+
+volumes:
+  connections-db-data:
+  notification-db-data:
