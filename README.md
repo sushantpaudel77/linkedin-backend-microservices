@@ -44,9 +44,9 @@ For advanced or staged deployments, use the split Compose files:
 ### 🔧 Split Compose Files (Recommended)
 
 ```bash
-docker compose -f docker compose.kafka.yml \
-               -f docker compose.db.yml \
-               -f docker compose.services.yml up
+docker compose -f docker-compose.base.yml \
+               -f docker-compose.kafka-zipkin.yml \
+               -f docker-compose.posts-user.yml up
 
 🧱 All-in-One Compose
 bash
