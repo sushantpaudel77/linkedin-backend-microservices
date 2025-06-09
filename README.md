@@ -33,9 +33,9 @@ This file serves as an **all-in-one alternative** — ideal for **quick local te
 
 For advanced or staged deployments, use the split Compose files:
 
-- [`docker-compose.kafka.yml`](./docker-compose.kafka.yml)
-- [`docker-compose.db.yml`](./docker-compose.db.yml)
-- [`docker-compose.services.yml`](./docker-compose.services.yml)
+- [`docker-compose.base.yml`](./docker-compose.base.yml)
+- [`docker-compose.kafka-zipkin.yml`](./docker-compose.kafka-zipkin.yml)
+- [`docker-compose.posts-user.yml`](./docker-compose.posts-user.yml)
 
 ---
 
