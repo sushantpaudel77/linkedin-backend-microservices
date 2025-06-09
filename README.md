@@ -16,7 +16,7 @@ This is a complete **monolithic `docker-compose.yml` setup** for my LinkedIn bac
 
 It includes:
 
-- Kafka & Kafka UI
+- Kafka & Kafbat UI
 - PostgreSQL Databases
 - Neo4j (Graph DB for Connections)
 - Spring Boot Microservices
@@ -44,7 +44,7 @@ For advanced or staged deployments, use the split Compose files:
 ### 🔧 Split Compose Files (Recommended)
 
 ```bash
-docker-compose -f docker compose.kafka.yml \
+docker compose -f docker compose.kafka.yml \
                -f docker compose.db.yml \
                -f docker compose.services.yml up
 
@@ -69,7 +69,7 @@ JWT_SECRET_KEY=my_super_secret_key
 🧠 Monitoring & Debugging
 Tool	URL	Notes
 Eureka Dashboard	http://localhost:8761	Service registration monitor
-Kafka UI	http://localhost:8090	View topics, messages
+Kafbat UI	http://localhost:8090	View topics, messages
 Neo4j Browser	http://localhost:7474	Graph DB for connections
 Zipkin (Optional)	Add tracing support later	Distributed tracing
 
@@ -86,7 +86,7 @@ Service	Port	Description
 🧪 Testing & Validation
 Use the following tools to test and validate the setup:
 🧪 Postman / Thunder Client for REST API testing
-🛰️ Kafka UI to inspect message topics and brokers
+🛰️ Kafbat UI to inspect message topics and brokers
 🌐 Eureka Dashboard to verify microservice registration
 📜 Logs via Docker or K8s to debug errors or issues
 
