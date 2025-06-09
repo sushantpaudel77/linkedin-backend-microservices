@@ -49,15 +49,9 @@ docker compose -f docker-compose.base.yml \
                -f docker-compose.posts-user.yml up
 
 🧱 All-in-One Compose
-bash
-Copy
-Edit
 docker-compose up --build
 
 ☸️ Kubernetes Deployment
-bash
-Copy
-Edit
 kubectl apply -f k8s/
 
 ⚙️ Resource Configuration
@@ -65,9 +59,6 @@ Kubernetes resource limits and requests can be adjusted based on your environmen
 
 For example, in ./k8s/connections-db.yml:
 
-yaml
-Copy
-Edit
 resources:
   limits:
     memory: "1024Mi"
