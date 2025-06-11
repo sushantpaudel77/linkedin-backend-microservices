@@ -1,12 +1,25 @@
-## 🛠️ TODO: Externalized Configuration with Spring Cloud Config
+🛠️ TODO: Externalized Configuration with Spring Cloud Config
+🎯 Goal: Centralize all microservice configs (ports, DB creds, Kafka, etc.) into a shared Git repo, removing local application.yml dependency.
 
-📌 **Note:** Currently, all microservices use **hardcoded or local `application.yml` files** for configuration.  
-To improve maintainability and enable centralized configuration management:
+✅ Steps to Integrate:
+ Set up a Spring Cloud Config Server
 
-- [ ] Integrate a **Spring Cloud Config Server**
-- [ ] Move all service-specific properties (ports, DB credentials, Kafka topics, etc.) to a shared config repo
-- [ ] Connect each microservice to fetch configuration from the Config Server at startup
-- [ ] (Optional) Add support for dynamic refresh using Spring Actuator + Bus
+ Use the shared Git repo for configs → e.g., spring-cloud-config-repo
+
+ Move each service's configs into the repo (application-{service}.yml)
+
+ Point all microservices to the Config Server:
+
+🔗 My Public Config Server URL:
+https://github.com/sushantpaudel77/github-linkedin-config-server
+
+ Add spring.config.import=optional:configserver:http://your-config-server-domain.com in each service
+
+ (Optional) Enable live config updates via Spring Boot Actuator + Cloud Bus
+
+📘 Docs: Spring Cloud Config
+
+This makes config management centralized, version-controlled, and scalable across environments.
 
 🔗 Official Docs: [Spring Cloud Config](https://spring.io/projects/spring-cloud-config)
 
