@@ -82,9 +82,6 @@ requests define the minimum guaranteed resources.
 
 
 🔐 Secrets & Environment Variables
-env
-Copy
-Edit
 JWT_SECRET_KEY=my_super_secret_key
 
 🧠 Monitoring & Debugging
